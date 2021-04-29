@@ -2,14 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as axes3d
 
-def axisEqual3D(ax):
-    extents = np.array([getattr(ax, 'get_{}lim'.format(dim))() for dim in 'xyz'])
-    sz = extents[:,1] - extents[:,0]
-    centers = np.mean(extents, axis=1)
-    maxsize = max(abs(sz))
-    r = maxsize/2
-    for ctr, dim in zip(centers, 'xyz'):
-        getattr(ax, 'set_{}lim'.format(dim))(ctr - r, ctr + r)
+def vec_add(v1, v2):
+    return (v1[0]+v2[0], v1[1]+v2[1], v1[2]+v2[2])
+
+def vec_minus(v1, v2):
+    return (v1[0]+v2[0], v1[1]+v2[1], v1[2]+v2[2])
 
 def polar_to_orthogonal(rho, theta, phi):
     return (
@@ -24,6 +21,10 @@ def draw_sphere(ax, R):
     (X, Y, Z) = polar_to_orthogonal(R, THETA, PHI)
     ax.plot_surface(X, Y, Z, alpha=0.2)
 
+def draw_line(ax, p1, p2):
+    vec = vec_minus(p1, p2)
+    
+
 # structrual parameters
 R_0 = 1         # radius of the sphere
 r_0 = .5        # inner length of the tetrahedron points to center
@@ -33,7 +34,6 @@ ax = axes3d.Axes3D(fig)
 ax.set_xlim3d(xmin=-2, xmax=2)
 ax.set_ylim3d(ymin=-2, ymax=2)
 ax.set_zlim3d(zmin=-2, zmax=2)
-axisEqual3D(ax)
 
 draw_sphere(ax, 1)
 
