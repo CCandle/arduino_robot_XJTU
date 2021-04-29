@@ -12,6 +12,9 @@ struct Vec {
   double& operator[](int i) {
     return v[i];
   }
+  const double& operator[](int i) const {
+    return v[i];
+  }
   Vec operator+(const Vec& a) const {
     return Vec(a[0]+v[0], a[1]+v[1], a[2]+v[2]);
   }
