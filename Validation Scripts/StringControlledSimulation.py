@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d.axes3d as axes3d
+from mpl_toolkits.mplot3d import axes3d
 
 def vec_add(v1, v2):
     return (v1[0]+v2[0], v1[1]+v2[1], v1[2]+v2[2])
@@ -31,9 +31,9 @@ r_0 = .5        # inner length of the tetrahedron points to center
 
 fig = plt.figure()
 ax = axes3d.Axes3D(fig)
-ax.set_xlim3d(xmin=-2, xmax=2)
-ax.set_ylim3d(ymin=-2, ymax=2)
-ax.set_zlim3d(zmin=-2, zmax=2)
+ax.set_xlim3d(xmin=-1.3, xmax=1.3)
+ax.set_ylim3d(ymin=-1.3, ymax=1.3)
+ax.set_zlim3d(zmin=-1, zmax=1)
 
 draw_sphere(ax, 1)
 
