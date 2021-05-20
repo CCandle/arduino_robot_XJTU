@@ -1,4 +1,4 @@
-#include <motor.h>
+#include "motor.h"
 struct Motor
 {
 	int DelayTimes, Direction;
