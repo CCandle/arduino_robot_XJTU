@@ -34,7 +34,14 @@ struct RobotDriver {
   Sensor dir_sensor;
 
   void solve_fill(int m0, int m1, int m2, int mx, double d[]) {
-    const double *MatA[3] = {dir_vecs[m0], dir_vecs[m1], dir_vecs[m2]};
+    double MatAT[3][3];
+    for (int i = 0; i < 3; ++i) {
+      MatAT[i][0] = dir_vecs[m0][i];
+      MatAT[i][1] = dir_vecs[m1][i];
+      MatAT[i][2] = dir_vecs[m2][i];
+    }
+    
+    const double *MatA[3] = {MatAT[0], MatAT[1], MatAT[2]};
     double D = DET3(MatA);
 
     MatA[0] = d;
