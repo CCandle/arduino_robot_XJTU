@@ -1,4 +1,5 @@
 #include "motor.h"
+
 struct Motor
 {
 	int DelayTimes, Direction;
@@ -7,7 +8,7 @@ struct Motor
 	/*
 	DelayTime is used in the microseconds in the function Rotate. 
 	CircleCounts is used to record how many circles the motor has rotate.
-*/
+	*/
 	Motor()
 	{
 		DelayTimes = 500;
@@ -56,5 +57,10 @@ struct Motor
 	/*
 	200 pulses can make a full rotation.
 	This function can also be used to record how many circles the motor rotate.
-*/
+	*/
+
+	// in our robot, move the mass block to given fraction of the pod
+	void MoveToFraction(double frac) {
+		// TODO
+	}
 };
