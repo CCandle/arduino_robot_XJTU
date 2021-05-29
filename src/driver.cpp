@@ -1,9 +1,8 @@
-#include "driver.h"
-#include "motor.h"
-#include "sensor.h"
+#include "motor.cpp"
+#include "sensor.cpp"
 
-#include <cmath>
-#include <cstring>
+#include <math.h>
+#include <string.h>
 
 #define R_0 (1.)        // radius of the sphere
 #define r_0 (.1)        // logically fixed eccentricity
@@ -19,8 +18,6 @@ const double dir_vecs[4][3] = {
     {-sqrt(2)/3*R_0, sqrt(6)/3*R_0, -R_0/3},
     {-sqrt(2)/3*R_0, -sqrt(6)/3*R_0, -R_0/3}
   };
-
-const double PI = acos(-1);
 
 struct RobotDriver {
   static void polar_to_orthogonal(double v[], double rho, double theta, double phi) {
@@ -91,7 +88,7 @@ struct RobotDriver {
 // TODO: movements
 
   void move_north() {
-    curr_theta += moving_step_length * PI;
+    curr_theta += moving_step_length * M_PI;
     calc_frac(curr_theta, curr_phi);
     move_motor_to_frac();
   }

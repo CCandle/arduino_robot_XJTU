@@ -1,6 +1,6 @@
-#include "driver.h"
-#include "motor.h"
-#include "sensor.h"
+#include "driver.cpp"
+#include "motor.cpp"
+#include "sensor.cpp"
 
 Motor motor1, motor2, motor3, motor4;
 Sensor sensor;

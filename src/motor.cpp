@@ -1,5 +1,3 @@
-#include "motor.h"
-
 struct Motor
 {
 	int DelayTimes, Direction;

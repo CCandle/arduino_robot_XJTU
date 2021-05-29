@@ -1,5 +1,3 @@
-#include "sensor.h"
-
 struct Sensor {
     double theta, phi;    // polar direction
 
