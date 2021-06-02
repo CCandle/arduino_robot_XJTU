@@ -6,17 +6,19 @@ Motor motor1, motor2, motor3, motor4;
 Sensor sensor;
 RobotDriver driver;
 
-void setup() {
-  // initialize pin ids
-  motor1.InitPin(1, 2);
-  motor2.InitPin(3, 4);
-  motor3.InitPin(5, 6);
-  motor4.InitPin(7, 8);
-  sensor.InitPin(9, 10);
-  // initialize the driver
-  driver.Init(motor1, motor2, motor3, motor4, sensor);
+void setup()
+{
+    // initialize pin ids
+    motor2.InitPin(3, 4);
+    motor1.InitPin(5, 6);
+    motor3.InitPin(9, 10);
+    motor4.InitPin(11, 12);
+    sensor.InitPin(7, 8);
+    // initialize the driver
+    driver.Init(motor1, motor2, motor3, motor4, sensor);
 }
 
-void loop() {
-  driver.move_north();
+void loop()
+{
+    driver.move_north();
 }

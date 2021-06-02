@@ -1,9 +1,11 @@
+import imageio
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 import matplotlib.animation as animation
 
 # calculation utils
+
 
 def polar_to_orthogonal(rho, theta, phi):
     return np.array((
@@ -12,11 +14,13 @@ def polar_to_orthogonal(rho, theta, phi):
         rho * np.cos(phi)                   # z
     ))
 
+
 def draw_sphere(ax, R):
     theta, phi = np.linspace(0, 2 * np.pi, 100), np.linspace(0, np.pi, 100)
     THETA, PHI = np.meshgrid(theta, phi)
     (X, Y, Z) = polar_to_orthogonal(R, THETA, PHI)
     ax.plot_surface(X, Y, Z, alpha=0.1)
+
 
 def draw_line(ax, p1, p2, *args, **kwargs):
     v = p2-p1
@@ -28,6 +32,7 @@ def draw_line(ax, p1, p2, *args, **kwargs):
         y.append(p1[1] + v[1] * i / 100)
         z.append(p1[2] + v[2] * i / 100)
     ax.plot3D(x, y, z, *args, **kwargs)
+
 
 def draw_points(ax, arr, *args, **kwargs):
     return ax.scatter3D([p[0] for p in arr], [p[1] for p in arr], [p[2] for p in arr], *args, **kwargs)
@@ -46,23 +51,28 @@ dir_vec = np.array([
     np.array([2/3*2**.5*R_0, 0, -1/3*R_0]),
     np.array([-2**.5/3*R_0, 6**.5/3*R_0, -R_0/3]),
     np.array([-2**.5/3*R_0, -6**.5/3*R_0, -R_0/3])
-    ])
+])
 
-#%% algo section
+# %% algo section
 
 # use dir_vec[1:4] as base vector
 # Ax = B
+
+
 def frac_pos_arr(theta, phi):
     pres = []
     for i in range(0, 4):
         dv = [dir_vec[j] for j in range(0, 4) if (i != j)]
-        x = np.linalg.solve(np.matrix(dv).T, polar_to_orthogonal(r_0, theta, phi).T)
+        x = np.linalg.solve(
+            np.matrix(dv).T, polar_to_orthogonal(r_0, theta, phi).T)
         mid = (u_bound + l_bound) / 2
         x = x.T + np.array([mid]*3)
-        pres.append(np.array([x[j if (j < i) else j-1] if (i != j) else mid for j in range(0, 4)]))
+        pres.append(np.array([x[j if (j < i) else j-1]
+                              if (i != j) else mid for j in range(0, 4)]))
     return sum(pres) / 4
 
-#%% base figure
+# %% base figure
+
 
 def drw_base_figure():
     fig = plt.figure()
@@ -83,7 +93,8 @@ def drw_base_figure():
         draw_line(ax, i * l_bound, i * u_bound, color='gray')
     return ax
 
-#%% dynamic figure
+
+# %% dynamic figure
 for num in range(0, 100):
     len_each = frac_pos_arr(0, np.pi / 50 * num)
 
@@ -93,15 +104,16 @@ for num in range(0, 100):
     d_p_ani = []
     ax = drw_base_figure()
     for dyn_point in dyn_points:
-        p, = ax.plot3D(dyn_point[0], dyn_point[1], dyn_point[2], 'o', color='green')
+        p, = ax.plot3D(dyn_point[0], dyn_point[1],
+                       dyn_point[2], 'o', color='green')
         d_p_ani.append(p)
-    c_p_ani, = ax.plot3D(center_of_mass[0], center_of_mass[1], center_of_mass[2], 'o', color='cyan')
+    c_p_ani, = ax.plot3D(
+        center_of_mass[0], center_of_mass[1], center_of_mass[2], 'o', color='cyan')
     plt.savefig('./AnimOut/' + str(num) + '.jpg')
     plt.close('all')
     print('Saved frame ' + str(num))
 
-#%% create gif
-import imageio
+# %% create gif
 
 image_list = []
 for num in range(0, 100):

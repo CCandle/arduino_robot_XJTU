@@ -1,6 +1,8 @@
 {
     "files.associations": {
+        "*.ino": "c",
         "cmath": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "driver.cpp": "c"
     }
 }
