@@ -58,7 +58,8 @@ struct Motor
 	*/
 
 	// in our robot, move the mass block to given fraction of the pod
-	void MoveToFraction(double frac) {
+	void MoveToFraction(double frac)
+	{
 		// TODO
 	}
 };

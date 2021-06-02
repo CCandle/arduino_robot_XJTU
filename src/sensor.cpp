@@ -1,15 +1,18 @@
-struct Sensor {
-    double theta, phi;    // polar direction
+struct Sensor
+{
+    double theta, phi; // polar direction
 
-    void InitPin(int XPin, int YPin) {
-
+    void InitPin(int XPin, int YPin)
+    {
     }
 
-    double get_theta() {
+    double get_theta()
+    {
         return theta;
     }
 
-    double get_phi() {
+    double get_phi()
+    {
         return phi;
     }
 };
