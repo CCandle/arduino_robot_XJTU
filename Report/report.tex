@@ -1,0 +1,168 @@
+\documentclass[a4paper]{ctexart}
+\usepackage{xeCJK}
+
+\setCJKmainfont[BoldFont={方正大黑简体}, ItalicFont={方正盛世楷书简体_准}, BoldItalicFont={方正大标宋简体}]{方正标雅宋简体}
+\setCJKsansfont{方正兰亭细黑简体}
+\setCJKmonofont{仿宋}
+
+\title{配重式球形机器人}
+\author{马力全关组}
+
+% Math
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{mathrsfs}
+% Utility
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{lastpage}
+% Beautifying packages
+\usepackage{wallpaper}
+% Code related
+\usepackage{minted, framed}
+\usepackage{listings}
+\usepackage[linesnumbered,boxed]{algorithm2e}
+% Formatting
+\usepackage{footmisc}
+\usepackage{float}
+\usepackage{longtable, array, booktabs}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox, framed}
+\usepackage{geometry}
+\usepackage{multicol}
+%\usepackage[toc]{multitoc}
+\usepackage{hyperref}
+% tikz
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,chains}
+
+
+\tikzstyle{startstop}=[rectangle,rounded corners,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=red!30]
+\tikzstyle{process}=[rectangle,minimum width=3cm,minimum height=1cm,text centered,text width =3cm,draw=black,fill=orange!30]
+\tikzstyle{arrow}=[thick,->,>=stealth]
+
+% Macro definitions
+\usepackage{color}
+\definecolor{grey}{RGB}{190, 190, 190}
+\geometry{a4paper,left=2.8cm,right=2.8cm,top=3.2cm,bottom=3.2cm}
+\newcommand{ \upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1} } }}
+\newcommand{ \mathbit}[1]{\mathbf{\mathit{#1}}}
+\hypersetup{
+colorlinks=true,
+linkcolor=black
+}
+\numberwithin{equation}{section}
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+
+\setlength{\columnseprule}{0.8pt}
+\setlength\columnsep{1cm}
+
+
+%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\setboolean{@twoside}{true}
+
+
+\begin{titlepage}
+
+  \maketitle
+  \begin{center}
+    小组课程实践
+  \end{center}
+
+  \ThisLRCornerWallPaper{0.8}{cover.png}
+
+  \begin{longtable}[]{@{}ccc@{}}
+  \toprule
+   & 姓名 & 联系电话\tabularnewline
+  \midrule
+  \endhead
+  组长 & 张骏扬 & 18967993817\tabularnewline
+  执行组长 & 曲凌枫 & \tabularnewline
+  组员 & 马博楠 & \tabularnewline
+  组员 & 栾家骏 & \tabularnewline
+  组员 & 戴嘉琦 & \tabularnewline
+  \bottomrule
+  \end{longtable}
+  \addtocounter{table}{-1}
+
+  
+\begin{center}
+  创新思维和机器人创客实践
+\end{center}
+
+\thispagestyle{empty}
+
+\end{titlepage}
+
+\addtocounter{page}{-2}
+
+\newpage
+
+\thispagestyle{fancy}
+\lhead{}
+\chead{\it\small{\textcolor{grey}{目录}}}
+\rhead{}
+\cfoot{}
+
+\tableofcontents
+
+\newpage
+
+
+% now body
+\pagestyle{fancy}
+\fancyhead[RE, LO]{\it\small\rightmark}
+\fancyhead[C]{\small{\it\textcolor{grey}{配重式球形机器人}}}
+\fancyhead[LE, RO]{\it\small{马力全关组}}
+\fancyfoot[C]{\it\small{第 \thepage 页\ 共 \pageref{LastPage} 页}}
+
+\section{问题提出}
+
+wtf\upcite{国务院人口普查办公室2012中国}
+\subsection{设计背景与目的}
+
+\subsection{国内外现有产品现状分析}
+
+\section{需求分析}
+
+\subsection{需求分析和筛选}
+
+\subsection{关键痛点的提炼}
+
+\section{设计概念生成、选择、评估与实现}
+
+
+\subsection{概念的生成}
+
+\subsubsection{设计概念一}
+\subsubsection{设计概念二}
+\subsubsection{设计概念三}
+
+\subsection{概念选择与评估}
+\subsection{概念的具体设计}
+
+
+\section{概念原型化和实践总结}
+\subsection{概念的原型化结果}
+
+
+
+\subsection{创新实践总结}
+
+\newpage
+\thispagestyle{fancy}
+\lhead{}
+\chead{\it\small{\textcolor{grey}{参考文献}}}
+\rhead{}
+\fancyfoot[C]{\it\small{第 \thepage 页\ 共 \pageref{LastPage} 页}}
+\phantomsection
+\addcontentsline{toc}{section}{参考文献}
+\bibliography{mycitation}
+\bibliographystyle{gbt7714-2005}
+%\printbibliography
+
+
+\end{document}

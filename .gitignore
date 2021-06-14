@@ -1,3 +1,27 @@
+# Editors and IDE files
+*/.vscode/
+.vscode/
+*/.idea/
+.idea/
+
+# Visualization Outputs
 *.jpg
 *.gif
-.vscode
+
+# Latex
+*.synctex(busy)
+*.aux
+*.bbl
+*.blg
+*.log
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.out
+*/_minted-report/
+Paper/Latex_Source/report.pdf
+report.pdf
+
+# Adobe, MS Office
+*.tmp
