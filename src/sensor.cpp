@@ -1,3 +1,7 @@
+#ifndef SENSOR
+#define SENSOR
+
+#include "Arduino.h"
 struct Sensor
 {
     double theta, phi; // polar direction
@@ -16,3 +20,5 @@ struct Sensor
         return phi;
     }
 };
+
+#endif

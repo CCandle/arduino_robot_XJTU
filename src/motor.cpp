@@ -1,8 +1,14 @@
+#ifndef MOTOR
+#define MOTOR
+
+#include "Arduino.h"
+
 struct Motor
 {
 	int DelayTimes, Direction;
 	double CircleCounts;
 	int StepPinId, DirPinId;
+	static constexpr double Circles = 3;
 	/*
 	DelayTime is used in the microseconds in the function Rotate. 
 	CircleCounts is used to record how many circles the motor has rotate.
@@ -13,6 +19,15 @@ struct Motor
 		CircleCounts = 0;
 		Direction = 1;
 	}
+
+  Motor& operator=(const Motor& m) {
+    DelayTimes = m.DelayTimes;
+    Direction = m.Direction;
+    CircleCounts = m.CircleCounts;
+    StepPinId = m.StepPinId;
+    DirPinId = m.DirPinId;
+    return *this;
+  }
 
 	void InitPin(int StepPin, int DirPin)
 	{
@@ -60,6 +75,18 @@ struct Motor
 	// in our robot, move the mass block to given fraction of the pod
 	void MoveToFraction(double frac)
 	{
-		// TODO
+		frac *= Circles;
+		if (frac < CircleCounts)
+    {
+      SetDirection(-1);
+      Rotate(CircleCounts - frac);
+      SetDirection(1);
+    }
+		else
+		{
+			Rotate(frac - CircleCounts);
+		}
 	}
 };
+
+#endif
