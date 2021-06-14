@@ -75,7 +75,7 @@ def frac_pos_arr(theta, phi):
 
 
 def drw_base_figure():
-    fig = plt.figure()
+    fig = plt.figure(figsize=(6,5), dpi=320)
     ax = axes3d.Axes3D(fig)
     ax.set_xlim3d(xmin=-1.3, xmax=1.3)
     ax.set_ylim3d(ymin=-1.3, ymax=1.3)
@@ -95,14 +95,15 @@ def drw_base_figure():
 
 
 # %% dynamic figure
-for num in range(0, 100):
-    len_each = frac_pos_arr(0, np.pi / 50 * num)
+for num in range(0, 360):
+    len_each = frac_pos_arr(0, np.pi / 90 * num)
 
     dyn_points = [len_each[i] * dir_vec[i] for i in range(0, 4)]
     center_of_mass = sum(dyn_points)
 
     d_p_ani = []
     ax = drw_base_figure()
+    ax.azim = num
     for dyn_point in dyn_points:
         p, = ax.plot3D(dyn_point[0], dyn_point[1],
                        dyn_point[2], 'o', color='green')
@@ -114,11 +115,11 @@ for num in range(0, 100):
     print('Saved frame ' + str(num))
 
 # %% create gif
-
+'''
 image_list = []
 for num in range(0, 100):
     image_list.append(imageio.imread('./AnimOut/' + str(num) + '.jpg'))
 
 imageio.mimsave('./Bad_Alg_Anim.gif', image_list, 'GIF', duration=0.03)
-
+'''
 # %%
