@@ -110,6 +110,10 @@ struct RobotDriver
         moving_step_length = v;
     }
 
+    void initialize_robot_pos() {
+        move_motor_to_frac();
+    }
+
     void move_motor_to_frac()
     {
         for (int i = 0; i < 4; ++i)

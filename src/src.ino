@@ -21,6 +21,9 @@ void setup()
     // initialize the driver
     Serial.begin(9600); 
     driver.Init(motor1, motor2, motor3, motor4, sensor);
+
+    // move to init state
+    driver.initialize_robot_pos();
 }
 int lstf(0);
 void loop()
