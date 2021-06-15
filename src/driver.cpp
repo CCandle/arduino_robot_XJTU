@@ -29,8 +29,8 @@ struct RobotDriver
         v[2] = rho * cos(phi);
     }
 
-    double moving_step_length;   // moving pase, defined by fraction of pi
-    double curr_theta, curr_phi; // cuurent position, defined by radius
+    double moving_step_length;    // moving pase, defined by fraction of pi
+    double curr_theta, curr_phi;  // current position, defined by radius
 
     Motor driven_motor[4];
     double motor_pos_frac[4]; // from 0-1
@@ -100,7 +100,7 @@ struct RobotDriver
         driven_motor[3] = motor4;
         dir_sensor = sensor;
 
-        moving_step_length = 0.05;
+        moving_step_length = 0.1;
         curr_theta = 0;
         curr_phi = 0;
     }
@@ -122,34 +122,12 @@ struct RobotDriver
         }
     }
 
-    void move_north()
+    void move_x_y(double x, double y)
     {
-        curr_phi += moving_step_length * M_PI;
-        if (curr_phi > 2*M_PI) curr_phi -= 2*M_PI;
-        calc_frac(curr_theta, curr_phi);
-        move_motor_to_frac();
-    }
-
-    void move_south()
-    {
-        curr_phi -= moving_step_length * M_PI;
-        if (curr_phi < 0) curr_phi += 2*M_PI;
-        calc_frac(curr_theta, curr_phi);
-        move_motor_to_frac();
-    }
-
-    void move_east()
-    {
-        curr_theta += moving_step_length * M_PI;
+        curr_theta += moving_step_length * x * M_PI;
+        curr_phi += moving_step_length * y * M_PI;
         if (curr_theta > 2*M_PI) curr_theta -= 2*M_PI;
-        calc_frac(curr_theta, curr_phi);
-        move_motor_to_frac();
-    }
-
-    void move_west()
-    {
-        curr_theta -= moving_step_length * M_PI;
-        if (curr_theta < 0) curr_theta += 2*M_PI;
+        if (curr_phi > 2*M_PI) curr_phi -= 2*M_PI;
         calc_frac(curr_theta, curr_phi);
         move_motor_to_frac();
     }
