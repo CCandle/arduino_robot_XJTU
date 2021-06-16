@@ -221,6 +221,22 @@ linkcolor=black
 
 该机器人使用的电子系统围绕 Arduino UNO 控制板开发。
 
+
+\begin{figure}[H]
+  \centering
+  \subfigure[机上电子系统接线图纸]{
+    \label{fig_elec_subfig_a}
+    \includegraphics[width=0.48\linewidth]{figures/main_bb.png}
+  }
+  \hfill
+  \subfigure[遥控接线图纸]{
+    \label{fig_elec_subfig_b}
+    \includegraphics[width=0.40\linewidth]{figures/remote_bb.png}
+  }
+  \caption{电子系统图纸}
+  \label{fig_elec}
+\end{figure}
+
 \subsubsection{模块接线设计}
 
 传感器子系统采用了 MPU6050 传感器模块，其为整合性 6 轴运动处理组件，控制板通过该组件获得 pitch，roll，yaw 等姿态信息，具体线路见示意图\ref{fig_wire_subfig_a}。
