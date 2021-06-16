@@ -74,18 +74,19 @@ linkcolor=black
 
   \ThisLRCornerWallPaper{0.8}{cover.png}
 
-  \begin{longtable}[]{@{}ccc@{}}
+  \begin{center}
+  \begin{tabular}[]{ccc}
   \toprule
-  成员 & 姓名 & 联系电话\tabularnewline
+  成员/分工 & 姓名 & 联系电话\\
   \midrule
-  \endhead
-  组长 & 张骏扬 & 18967993817\tabularnewline
-  执行组长 & 曲凌枫 & \tabularnewline
-  机械组 & 马博楠 & \tabularnewline
-  电子组 & 栾家骏 & \tabularnewline
-  软件组 & 戴嘉琦 & \tabularnewline
+  组长 & 张骏扬 & 18967993817 \\
+  执行组长 & 曲凌枫 & 15698207871 \\
+  机械组 & 马博楠 & 17693108836 \\
+  电子组 & 栾家骏 & 13323022829 \\
+  软件组 & 戴嘉琦 & 18612535164 \\
   \bottomrule
-  \end{longtable}
+  \end{tabular}
+\end{center}
   \addtocounter{table}{-1}
 
   
@@ -128,11 +129,15 @@ linkcolor=black
 \begin{itemize}
   \item 进行团队组织实践，使用团队组织技巧，锻炼合作能力；
   \item 进行产品调研与开发实践，锻炼创新能力；
-  \item 进行机械、电子、软件设计实践，锻炼学习与设计能力
+  \item 进行机械、电子、软件设计实践，锻炼学习与设计能力；
   \item 进行系统统调装配，锻炼排错与优化能力。
 \end{itemize}
 
+球形机器人的应用包括监视、环境监测、巡视、水下探索、行星探索、复康、儿童发展及娱乐。球形机器人也可以是可以在陆地上或是水中（或水底）行动的两栖机器人。
+
 \subsection{国内外现有研究成果}
+
+最常见的球形机器人行动方式是透过调整机器人的重心位置来达到\upcite{halme1996motion}。其他的行动方式有利用飞轮的角动量守恒\upcite{joshi2010design}、利用环境中的风、利用外壳形变的方式移动、以及用陀螺仪效应。
 
 配重式全向球形机器人最初的设计概念在 2004 年被提出\upcite{2004Introducing}。
 
@@ -160,7 +165,7 @@ linkcolor=black
 
 \subsubsection{设计概念一——六足式机器人}
 
-最初，本项目拟设计制作六电机六足式机器人，并使用该设想进行初步立项。该设想被否决，原因是已有成熟的商业产品先例以及开源项目，无法体现创新性。
+最初，本项目拟设计制作六电机六足式模块化机器人，并使用该设想进行初步立项。该设想被否决，原因是已有成熟的商业产品先例以及开源项目，无法体现创新性。
 
 
 \subsubsection{设计概念二——三足式弹跳机器人}
@@ -174,7 +179,7 @@ linkcolor=black
 
 \subsubsection{设计概念四——配重式球型机器人}
 
-
+最终，本项目设计了配重式球形机器人。
 
 \subsection{概念选择与评估}
 
@@ -204,7 +209,39 @@ linkcolor=black
   \caption{机械结构 CAD 设计渲染图}
 \end{figure}
 
+该球形机器人以伊朗科技大学的 Puyan Mojabi 和伊朗加兹温阿萨德大学的 Amir Homayoun Javadi A 开发的一种全方位球形运动机器人 August\upcite{2004Introducing} 为原型进行设计，机器人主体分为核心框架，丝杆滑台，球壳三大部分。
+
+其中核心框架为正四面体结构，四个顶角位置设计了连接角结构用于构建框架并固定步进电机。步进电机传动轴从连接角内侧身处并通过联轴器与丝杆滑台连接，滑台结构两侧的导轨在保证质量块正常运动的同时也加强了整个结构的强度。机器人内部结构通过自主设计的固定座与球壳连接，由于结构特性，连接处无需使用粘结剂固定，便于拆卸维修与调试。
+
+机械系统各部件加工采用了不同的方法，其中注塑球壳、配重、丝杆滑台、轴承等部件为预制工业品，固定座与连接角结构框架为 3D 打印部件。电子部件的固定基座由亚克力切割完成。结构利用螺丝、无痕胶、扎带等方式固定，在保证开发效率的情况下照顾了机械强度等要求。
+
 \subsection{电子系统设计}
+
+\subsubsection{电子系统综述}
+
+该机器人使用的电子系统围绕 Arduino UNO 控制板开发。
+
+\subsubsection{模块接线设计}
+
+传感器子系统采用了 MPU6050 传感器模块，其为整合性 6 轴运动处理组件，控制板通过该组件获得 pitch，roll，yaw 等姿态信息，具体线路见示意图\ref{fig_wire_subfig_a}。
+
+\begin{figure}[H]
+  \centering
+  \subfigure[MPU6050 接线图纸]{
+    \label{fig_wire_subfig_a}
+    \includegraphics[width=0.48\linewidth]{figures/MPU6050接线图纸.png}
+  }
+  \hfill
+  \subfigure[电机驱动图纸]{
+    \label{fig_wire_subfig_b}
+    \includegraphics[width=0.48\linewidth]{figures/电机驱动图纸.png}
+  }
+  \caption{电子系统接线图纸}
+  \label{fig_wire}
+\end{figure}
+
+
+步进电机子系统中，使用了 A4988 作为步进电机控制模块，示意图\ref{fig_wire_subfig_b}中，右上角的 VMOT 与 GND 提供步进电机运行电源，2B 与 2A 提供电机一极的运转电力，1B 与 1A 提供另一极；VDD 与 GND 提供 A4988 模块电力；左下 DIR（Direction）控制电机转向，STEP 控制电机旋转步数；SLP（Sleep）控制模块是否休眠，默认开启状态为高电平；RST（Reset）控制微步设置。将 SLP 与 RST 相连是为了方便进行微步设置进行调试，但实际运行中我们不采用预配置的微步操作，而是使用自己编写的一套代码控制步进电机的运转，因此在代码里我们加上了相应的函数，以调节转速、转向，并且能够控制圈数等物理参数。
 
 \subsection{控制算法设计}
 
@@ -247,6 +284,46 @@ linkcolor=black
 \subsubsection{位置求解}
 
 当机器人在低速情况时，可假设中心与重心的射线始终指向地心，也就是说，只要改变机器人重心在相对坐标系中的位置，产生滚动，就可以改变机器人中心在绝对坐标系中的位置，并且位置是确定的。下文给出一种确定性连续求解位置的方法，目的是把机器人位移指令转换的重心位置串，继续转换为配重块位置串。
+
+
+\begin{figure}[H]
+  \begin{minipage}{0.32\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/sim33.jpg}
+    \end{center}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/sim37.jpg}
+    \end{center}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/sim41.jpg}
+    \end{center}
+  \end{minipage}
+  \vfill
+  \begin{minipage}{0.32\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/sim45.jpg}
+    \end{center}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/sim49.jpg}
+    \end{center}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.32\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/sim53.jpg}
+    \end{center}
+  \end{minipage}
+  \caption{重心位置反解的可视化计算机模拟}
+\end{figure}
 
 当给定中心位置 $\overline{\boldsymbol c}$，因式\ref{equ_center}是超定方程，拥有多解，不能立刻求出四个配重位移比例。则以电机对称调用、尽量靠近杆中心为目标，给出一个合理的求解方法。若忽略 $\boldsymbol v_3$，由于 $\boldsymbol v_0,\boldsymbol v_1,\boldsymbol v_2$ 正交，以此三个向量作为基向量，可解出 $\overline{\boldsymbol c}$ 的分解 $\left(p_0^{(3)},p_1^{(3)},p_2^{(3)}\right)$。又有 $\boldsymbol v_3 = - \boldsymbol v_0 -\boldsymbol v_1-\boldsymbol v_2$，则可以得到一个尽量靠近杆中心的非对称解：
 
@@ -321,9 +398,40 @@ linkcolor=black
 
 \subsection{概念的原型化结果}
 
+本项目已完成样机的开发。
 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{figures/result1.png}
+  \end{center}
+  \caption{样机细节图}
+\end{figure}
 
 \subsection{创新实践总结}
+
+本项目的研发工作在半个学期内达到了中后期阶段，这一切成绩均离不开各位组员的积极参与与勤奋付出。
+
+机械设计与加工部分由马博楠同学完成；电子部分中，整体系统由曲凌枫同学设计组件，传感器子系统与电机子系统由栾家骏负责组装调试；软件部分中，控制算法由张骏扬同学开发完成，模块通信部分由戴嘉琦开发完成。各成员也参与到了其他成员的活动中，完成了模块函数的封装，控制算法的讨论，通信协议的确定，机械参数的对接等工作。
+
+本项目软件部分多数成果使用 Git（分布式版本管理工具）维护，可以作为项目整体进度的参考。
+
+\begin{figure}[H]
+  \begin{minipage}{0.98\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/github.png}
+    \end{center}
+  \end{minipage}
+  \vfill
+  \begin{minipage}{0.98\linewidth}
+    \begin{center}
+      \includegraphics[width=0.98\linewidth]{figures/gitnetwork.png}
+    \end{center}
+  \end{minipage}
+  \caption{Git Commit 历史与分支网络}
+\end{figure}
+
+
+
 
 \newpage
 \thispagestyle{fancy}
