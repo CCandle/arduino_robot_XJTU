@@ -145,16 +145,18 @@ linkcolor=black
 
 \subsection{需求分析和筛选}
 
+本项目拟实现的机器人分两类，一类是足式机器人，一类是球形机器人。本组最终选择了球形机器人，原因是，根据本项目锻炼设计与创新能力的目标，球形机器人应用较不成熟，有更大难度发展空间，符合需求。
+
 球形形态机器人可衡量的目标有以下几点：
 
 \begin{itemize}
   \item 全向对称移动：在球形机器人的任何状态能够以任意方向继续滚动，使得在地面斜率变化的情况下可以使用算法保持稳定的运动路线；
-  \item 精密控制能力：配重式球形机器人能够进行精密的
+  \item 精密控制能力：配重式球形机器人能够进行精密的位置操控；
   \item 通过性：同尺寸球形机器人相较其他形态拥有较强的通过性，适应不平整地形；
   \item 机械强度与密闭性：球形机器人可以使用无线控制方式，使得球壳能够完全密闭，防水抗干扰；
 \end{itemize}
 
-\subsection{关键痛点的提炼}
+
 
 \section{设计概念生成、选择、评估与实现}
 
@@ -167,15 +169,47 @@ linkcolor=black
 
 最初，本项目拟设计制作六电机六足式模块化机器人，并使用该设想进行初步立项。该设想被否决，原因是已有成熟的商业产品先例以及开源项目，无法体现创新性。
 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.35\textwidth]{figures/sixfeet.jpeg}
+  \end{center}
+  \label{fig_concept_1}
+  \caption{设计概念目标设想图}
+\end{figure}
+
+本设计概念已经进展到查阅相关资料，尝试阅读控制逻辑的阶段。本设计概念提出尝试实行后立刻更改了设想。
+
 
 \subsubsection{设计概念二——三足式弹跳机器人}
 
 六足机器人否决后，本项目拟设计制作小型化三足式弹跳机器人。
 
+该弹跳机器人通过电机压缩弹簧，随后释放锁止机构，使机器人进行不断运动。并通过不同的电机压缩程度控制弹跳方向。
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.35\textwidth]{figures/concept2.jpg}
+  \end{center}
+  \label{fig_concept_2}
+  \caption{设计概念二草图设计图}
+\end{figure}
+
+本设计概念已经进展到草图设想，控制系统拟设计的阶段。
+
+然而在初步设计控制算法和电子系统后，发现短时间内的资源不足以使机器人达到轻量化，样机验证困难。因各种原因遂放弃该设计。
 
 \subsubsection{设计概念三——重心牵拉式球形机器人}
 
 由于三足式机器人的流产，本项目将方向转变为球形机器人。
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.85\textwidth]{figures/concept3.jpg}
+  \end{center}
+  \label{fig_concept_3}
+  \caption{设计概念三草图设计图}
+\end{figure}
+
 
 \subsubsection{设计概念四——配重式球型机器人}
 
